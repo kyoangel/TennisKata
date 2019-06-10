@@ -30,7 +30,7 @@ namespace TennisKata
 				{
 					if (_firstPlayerScoreTimes - _secondPlayerScoreTimes == 1)
 					{
-						return "Kyo Adv";
+						return $"{_firstPlayerName} Adv";
 					}
 				}
 
