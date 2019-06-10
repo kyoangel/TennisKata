@@ -35,6 +35,10 @@ namespace TennisKata
 					{
 						return $"{AdvPlayer()} Adv";
 					}
+					else
+					{
+						return AdvPlayer() + " Win";
+					}
 				}
 
 				return NormalScore();
