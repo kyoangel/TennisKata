@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TennisKata
 {
 	public class Tennis
 	{
 		private readonly string _firstPlayerName;
+		private readonly string _secondPlayerName;
 		private int _firstPlayerScoreTimes;
 
 		private Dictionary<int, string> _scoreLookup = new Dictionary<int, string>
@@ -17,20 +19,30 @@ namespace TennisKata
 
 		private int _secondPlayerScoreTimes;
 
-		public Tennis(string firstPlayerName)
+		public Tennis(string firstPlayerName, string secondPlayerName)
 		{
 			_firstPlayerName = firstPlayerName;
+			_secondPlayerName = secondPlayerName;
 		}
 
 		public string Score()
 		{
 			if (IsScoreDiff())
 			{
-				if (_firstPlayerScoreTimes > 3)
+				if (_firstPlayerScoreTimes > 3 || _secondPlayerScoreTimes > 3)
 				{
-					if (_firstPlayerScoreTimes - _secondPlayerScoreTimes == 1)
+					if (Math.Abs(_firstPlayerScoreTimes - _secondPlayerScoreTimes) == 1)
 					{
-						return $"{_firstPlayerName} Adv";
+						string advPlayerName;
+						if (_firstPlayerScoreTimes > _secondPlayerScoreTimes)
+						{
+							advPlayerName = _firstPlayerName;
+						}
+						else
+						{
+							advPlayerName = _secondPlayerName;
+						}
+						return $"{advPlayerName} Adv";
 					}
 				}
 
