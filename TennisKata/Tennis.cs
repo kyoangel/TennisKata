@@ -29,15 +29,15 @@ namespace TennisKata
 		{
 			if (IsScoreDiff())
 			{
-				if (_firstPlayerScoreTimes > 3 || _secondPlayerScoreTimes > 3)
+				if (IsGamePoint())
 				{
-					if (Math.Abs(_firstPlayerScoreTimes - _secondPlayerScoreTimes) == 1)
+					if (IsAdv())
 					{
-						return $"{AdvPlayer()} Adv";
+						return AdvScore();
 					}
 					else
 					{
-						return AdvPlayer() + " Win";
+						return WinScore();
 					}
 				}
 
@@ -49,6 +49,26 @@ namespace TennisKata
 				return Deuce();
 			}
 			return SameScore();
+		}
+
+		private string WinScore()
+		{
+			return AdvPlayer() + " Win";
+		}
+
+		private string AdvScore()
+		{
+			return $"{AdvPlayer()} Adv";
+		}
+
+		private bool IsAdv()
+		{
+			return Math.Abs(_firstPlayerScoreTimes - _secondPlayerScoreTimes) == 1;
+		}
+
+		private bool IsGamePoint()
+		{
+			return _firstPlayerScoreTimes > 3 || _secondPlayerScoreTimes > 3;
 		}
 
 		private string AdvPlayer()
