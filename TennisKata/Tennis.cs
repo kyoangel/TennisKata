@@ -27,28 +27,7 @@ namespace TennisKata
 
 		public string Score()
 		{
-			if (IsScoreDiff())
-			{
-				if (IsGamePoint())
-				{
-					if (IsAdv())
-					{
-						return AdvScore();
-					}
-					else
-					{
-						return WinScore();
-					}
-				}
-
-				return NormalScore();
-			}
-
-			if (IsDeuce())
-			{
-				return Deuce();
-			}
-			return SameScore();
+			return IsScoreDiff() ? IsGamePoint() ? IsAdv() ? AdvScore() : WinScore() : NormalScore() : IsDeuce() ? Deuce() : SameScore();
 		}
 
 		private string WinScore()
