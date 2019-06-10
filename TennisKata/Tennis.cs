@@ -33,16 +33,7 @@ namespace TennisKata
 				{
 					if (Math.Abs(_firstPlayerScoreTimes - _secondPlayerScoreTimes) == 1)
 					{
-						string advPlayerName;
-						if (_firstPlayerScoreTimes > _secondPlayerScoreTimes)
-						{
-							advPlayerName = _firstPlayerName;
-						}
-						else
-						{
-							advPlayerName = _secondPlayerName;
-						}
-						return $"{advPlayerName} Adv";
+						return $"{AdvPlayer()} Adv";
 					}
 				}
 
@@ -54,6 +45,11 @@ namespace TennisKata
 				return Deuce();
 			}
 			return SameScore();
+		}
+
+		private string AdvPlayer()
+		{
+			return _firstPlayerScoreTimes > _secondPlayerScoreTimes ? _firstPlayerName : _secondPlayerName;
 		}
 
 		private static string Deuce()
