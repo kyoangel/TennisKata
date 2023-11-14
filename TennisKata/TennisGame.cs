@@ -11,6 +11,10 @@ public class TennisGame
             return "Fifteen Love";
         }
 
+        if (_firstPlayerScoreTime==2)
+        {
+            return "Thirty Love";
+        }
         return "Love All";
     }
 
