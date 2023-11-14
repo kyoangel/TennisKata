@@ -30,14 +30,24 @@ public class Tests
     [Test]
     public void Thirty_Love()
     {
-        GivenFirstPlayerScore();
+        GivenFirstPlayerScore(2);
         var score = _tennisGame.Score();
         score.Should().Be("Thirty Love");
     }
 
-    private void GivenFirstPlayerScore()
+    [Test]
+    public void Forty_Love()
     {
-       _tennisGame.FirstPlayerScore();
-        _tennisGame.FirstPlayerScore();
+        GivenFirstPlayerScore(3);
+        var score = _tennisGame.Score();
+        score.Should().Be("Forty Love");
+    }
+    
+    private void GivenFirstPlayerScore(int times)
+    {
+        for (int i = 0; i < times; i++)
+        {
+            _tennisGame.FirstPlayerScore();
+        }
     }
 }

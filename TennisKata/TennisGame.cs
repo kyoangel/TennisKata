@@ -3,18 +3,24 @@
 public class TennisGame
 {
     private int _firstPlayerScoreTime;
-
+    Dictionary<int, string> _scoreLookup = new Dictionary<int, string> {
+        {
+            1, "Fifteen"
+        },
+        {
+            2, "Thirty"
+        },
+        {
+            3, "Forty"
+        }
+    };
     public string Score()
     {
-        if (_firstPlayerScoreTime==1)
+        if (_firstPlayerScoreTime>0)
         {
-            return "Fifteen Love";
+            return $"{_scoreLookup[_firstPlayerScoreTime]} Love";
         }
 
-        if (_firstPlayerScoreTime==2)
-        {
-            return "Thirty Love";
-        }
         return "Love All";
     }
 
