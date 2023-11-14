@@ -42,10 +42,23 @@ public class Tests
         var score = _tennisGame.Score();
         score.Should().Be("Forty Love");
     }
-    
+
+    [Test]
+    public void Love_Fifteen()
+    {
+        GivenSecondPlayerScore();
+        var score = _tennisGame.Score();
+        score.Should().Be("Love Fifteen");
+    }
+
+    private void GivenSecondPlayerScore()
+    {
+        _tennisGame.SecondPlayerScore();
+    }
+
     private void GivenFirstPlayerScore(int times)
     {
-        for (int i = 0; i < times; i++)
+        for (var i = 0; i < times; i++)
         {
             _tennisGame.FirstPlayerScore();
         }

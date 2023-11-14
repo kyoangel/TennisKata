@@ -2,8 +2,8 @@
 
 public class TennisGame
 {
-    private int _firstPlayerScoreTime;
-    Dictionary<int, string> _scoreLookup = new Dictionary<int, string> {
+    readonly Dictionary<int, string> _scoreLookup = new Dictionary<int, string>
+    {
         {
             1, "Fifteen"
         },
@@ -14,11 +14,21 @@ public class TennisGame
             3, "Forty"
         }
     };
+
+    private int _firstPlayerScoreTime;
+
+    private int _secondPlayerScoreTime;
+
     public string Score()
     {
-        if (_firstPlayerScoreTime>0)
+        if (_firstPlayerScoreTime > 0)
         {
             return $"{_scoreLookup[_firstPlayerScoreTime]} Love";
+        }
+
+        if (_secondPlayerScoreTime == 1)
+        {
+            return "Love Fifteen";
         }
 
         return "Love All";
@@ -27,5 +37,10 @@ public class TennisGame
     public void FirstPlayerScore()
     {
         _firstPlayerScoreTime++;
+    }
+
+    public void SecondPlayerScore()
+    {
+        _secondPlayerScoreTime++;
     }
 }
